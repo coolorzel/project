@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListController!{% endblock %}
+
+{% block body %}
+    <div class="col-10 col-md-10 col-sm-10">
+        <div class="card text-center">
+            <div class="card-header">
+                Post list for logged in users.
+            </div>
+            <div class="card-body overflow-auto">
+                <h5 class="card-title">Special title treatment</h5>
+                <div class="d-flex justify-content-center" style="height: 500px">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Body</th>
+                                <th scope="col">User</th>
+                                <!--<th scope="col">Edit</th>-->
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for post in posts %}
+                                <tr>
+                                    <th scope="row">{{ post.id }}</th>
+                                    <td>{{ post.title }}</td>
+                                    <td>{{ post.body }}</td>
+                                    <td>{{ post.name }}</td>
+                                    <!-- <td><button class="btn btn-sm btn-primary">Edit</button></td> -->
+                                    <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Count posts: {{ posts|length }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
