@@ -2,10 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Api\UrlGeneratorInterface;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use App\Controller\PostsController;
 use App\Repository\PostsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 #[ORM\Entity(repositoryClass: PostsRepository::class)]
+#[ApiResource(
+)]
 class Posts
 {
     #[ORM\Id]
