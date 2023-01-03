@@ -4,6 +4,11 @@
 
 {% block body %}
     <div class="col-10 col-md-10 col-sm-10">
+        {% for message in app.flashes('success_delete') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="card text-center">
             <div class="card-header">
                 Post list for logged in users.
@@ -31,7 +36,7 @@
                                     <td>{{ post.body }}</td>
                                     <td>{{ post.name }}</td>
                                     <!-- <td><button class="btn btn-sm btn-primary">Edit</button></td> -->
-                                    <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                    <td><a href="{{ path('app_list_delete', {'id': post.id}) }}" class="btn btn-sm btn-danger">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
