@@ -32,6 +32,12 @@ class ListController extends AbstractController
     public function delete($id): Response
     {
         $post = $this->postsRepository->find($id);
+        if (!$post)
+        {
+            $this->addFlash('success_delete', 'ID: '.$id.' was removed earlier.');
+
+            return $this->redirectToRoute('app_list');
+        }
         $this->entityManager->remove($post);
         $this->entityManager->flush();
         $this->addFlash('success_delete', 'Success delete post id: '.$id);
